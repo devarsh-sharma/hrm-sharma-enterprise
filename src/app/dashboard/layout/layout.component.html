@@ -1,0 +1,49 @@
+<mat-sidenav-container class="container">
+
+  <!-- SIDEBAR -->
+  <mat-sidenav mode="side" opened class="sidenav">
+
+    <div class="logo">
+      <mat-icon color="primary">business</mat-icon>
+      <span>HRM Sharma</span>
+    </div>
+
+    <mat-nav-list>
+      <ng-container *ngFor="let item of menuItems; trackBy: trackByLabel">
+        <!-- *ngIf="rightsService.hasRight(item.right)" -->
+        <a mat-list-item [routerLink]="item.route" routerLinkActive="active-link">
+          <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+          <span matLine>{{ item.label }}</span>
+        </a>
+
+      </ng-container>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <!-- MAIN CONTENT -->
+  <mat-sidenav-content>
+
+    <!-- TOP TOOLBAR -->
+    <mat-toolbar color="primary" class="toolbar">
+      <span>HRM Sharma Enterprise</span>
+
+      <span class="spacer"></span>
+
+      <mat-slide-toggle [checked]="isDarkTheme" (change)="toggleTheme()">
+        Dark Mode
+      </mat-slide-toggle>
+
+      <button mat-icon-button>
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- ROUTER OUTLET -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
